@@ -1,0 +1,148 @@
+<div class="loader-container w-100" *ngIf="isLoading">
+    <app-loader-spinner></app-loader-spinner>
+</div>
+
+<div class="add-product-container" *ngIf="!isLoading">
+    <div class="card" style="border: none;">
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit(regForm.value)">
+            <h1 style="color: rgb(62,62,62); font-size: 38px; font-weight: bold;" class="mb-4">Add Products</h1>
+            <div class="add-product-form-container row">
+                <div class="col-6 col-12 col-md-6">
+                    <!-- Product Name -->
+                    <div class="form-group mb-2">
+                        <label for="productname">Product Name</label>
+                        <input
+                            placeholder="Enter product name"
+                            type="text"
+                            class="form-control"
+                            id="productname"
+                            formControlName="productname"
+                            required
+                        />
+                        <div *ngIf="regForm.get('productname')?.touched && regForm.get('productname')?.errors">
+                            <div *ngIf="regForm.get('productname')?.errors?.['required']" class="error-message text-danger">
+                                Product name is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="form-group mb-2">
+                        <label for="price">Price</label>
+                        <input
+                            placeholder="Enter price"
+                            type="number"
+                            class="form-control"
+                            id="price"
+                            formControlName="price"
+                            required
+                        />
+                        <div *ngIf="regForm.get('price')?.touched && regForm.get('price')?.errors">
+                            <div *ngIf="regForm.get('price')?.errors?.['required']" class="error-message text-danger">
+                                Price is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image URL -->
+                    <div class="form-group mb-2">
+                        <label for="image">Image URL</label>
+                        <input
+                            placeholder="Enter image URL"
+                            type="text"
+                            class="form-control"
+                            id="image"
+                            formControlName="image"
+                            required
+                        />
+                        <div *ngIf="regForm.get('image')?.touched && regForm.get('image')?.errors">
+                            <div *ngIf="regForm.get('image')?.errors?.['required']" class="error-message text-danger">
+                                Image URL is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-12 col-md-6">
+                    <!-- Category -->
+                    <div class="form-group mb-2">
+                        <label for="category">Category</label>
+                        <input
+                            placeholder="Enter category"
+                            type="text"
+                            class="form-control"
+                            id="category"
+                            formControlName="category"
+                            required
+                        />
+                        <div *ngIf="regForm.get('category')?.touched && regForm.get('category')?.errors">
+                            <div *ngIf="regForm.get('category')?.errors?.['required']" class="error-message text-danger">
+                                Category is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stock -->
+                    <div class="form-group mb-2">
+                        <label for="countInStock">Stock</label>
+                        <input
+                            placeholder="Enter stock count"
+                            type="number"
+                            class="form-control"
+                            id="countInStock"
+                            formControlName="countInStock"
+                            required
+                        />
+                        <div *ngIf="regForm.get('countInStock')?.touched && regForm.get('countInStock')?.errors">
+                            <div *ngIf="regForm.get('countInStock')?.errors?.['required']" class="error-message text-danger">
+                                Stock is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="form-group mb-2">
+                        <label for="rating">Rating</label>
+                        <input
+                            placeholder="Enter rating"
+                            type="number"
+                            class="form-control"
+                            id="rating"
+                            formControlName="rating"
+                            required
+                        />
+                        <div *ngIf="regForm.get('rating')?.touched && regForm.get('rating')?.errors">
+                            <div *ngIf="regForm.get('rating')?.errors?.['required']" class="error-message text-danger">
+                                Rating is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group mb-2">
+                <label for="description">Description</label>
+                <textarea
+                    rows="5"
+                    placeholder="Enter description"
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    formControlName="description"
+                    required
+                ></textarea>
+                <div *ngIf="regForm.get('description')?.touched && regForm.get('description')?.errors">
+                    <div *ngIf="regForm.get('description')?.errors?.['required']" class="error-message text-danger">
+                        Description is required
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn mt-4 w-100" style="background-color: rgb(68, 68, 68); color: white;" [disabled]="regForm.invalid">
+                Add Product
+            </button>
+        </form>
+    </div>
+</div>
